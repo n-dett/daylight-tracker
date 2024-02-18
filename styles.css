@@ -1,0 +1,61 @@
+    
+* {
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(#e0f9ff, #ffffff);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 50%;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 30px;
+}
+
+
+h3 {
+    padding: 0 30px;
+}
+
+#daylight-tracker, h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.sunset-last-light {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#enter-zip {
+    font-size: 21px;
+}
+
+input[type=text] {
+    width: 40%;
+    height: 40px;
+}
