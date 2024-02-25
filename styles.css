@@ -1,6 +1,7 @@
     
 * {
     text-align: center;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -22,7 +23,6 @@ h1 {
 }
 
 h2 {
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
     font-size: 30px;
@@ -33,16 +33,12 @@ h3 {
     padding: 0 30px;
 }
 
-#daylight-tracker, h3 {
-    font-family: "Poppins", sans-serif;
+#daylight-tracker, h3{
     font-weight: 600;
-    font-style: normal;
   }
 
-p {
-    font-family: "Poppins", sans-serif;
+span {
     font-weight: 500;
-    font-style: normal;
 }
 
 .sunset-last-light {
@@ -53,9 +49,28 @@ p {
 
 #enter-zip {
     font-size: 21px;
+    font-weight: 500;
 }
 
 input[type=text] {
     width: 40%;
-    height: 40px;
+    /* height: 40px; */
+    outline: 1px solid #6c6c6c;
+    border: none;
+    font-size: 27px;
 }
+
+#zip-input::placeholder {
+    color: #c8c8c8;
+}
+
+#zip-input:focus::placeholder {
+    color: transparent;
+}
+
+#time-left {
+    font-size: 60px;
+    font-weight: 300;
+
+}
+
