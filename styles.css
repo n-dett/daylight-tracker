@@ -2,6 +2,7 @@
 * {
     text-align: center;
     font-family: "Poppins", sans-serif;
+    /* box-sizing: border-box; */
 }
 
 body {
@@ -22,29 +23,25 @@ h1 {
     font-size: 48px;
 }
 
-h2 {
-    font-weight: 600;
-    font-style: normal;
-    font-size: 30px;
+#daylight-left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-
 h3 {
-    padding: 0 30px;
+    font-size: 24px;
+    margin-bottom: 0;
 }
 
 #daylight-tracker, h3{
     font-weight: 600;
   }
 
-span {
-    font-weight: 500;
-}
-
-.sunset-last-light {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.times {
+    font-weight: 300;
+    font-size: 36px;
 }
 
 #enter-zip {
@@ -53,11 +50,12 @@ span {
 }
 
 input[type=text] {
-    width: 40%;
-    /* height: 40px; */
+    width: 45%;
+    min-width: 115px;
     outline: 1px solid #6c6c6c;
     border: none;
     font-size: 27px;
+    margin-bottom: 5px;
 }
 
 #zip-input::placeholder {
@@ -68,9 +66,45 @@ input[type=text] {
     color: transparent;
 }
 
+#buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+button {
+    width: 22%;
+    margin: 10px 7px;
+    font-size: 16px;
+    background-color: transparent;
+    height: 40px;
+    border: #000000 solid 1px;
+}
+
+button:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+#daylight-left-heading {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
 #time-left {
     font-size: 60px;
     font-weight: 300;
-
 }
 
+#sunset-last-light-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sunset-last-light {
+    padding: 0 30px 30px 30px;
+}

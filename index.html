@@ -15,19 +15,23 @@
             <h1 id="daylight-tracker">Daylight Tracker</h1>
             <h2 id="enter-zip">Enter your zipcode</h2>
             <input type="text" id="zip-input" placeholder="123456">
+            <div id="buttons-container">
+                <button>Auto Detect Zip</button>
+                <button>Enter</button>
+            </div>
         </div>
-        <div>
-            <h2>Daylight Left Today</h2>
+        <div id="daylight-left-container">
+            <span id="daylight-left-heading">Daylight Left Today in Lincoln</span>
             <span id="time-left">4h 28m 19s</span>
         </div>
-        <div class="sunset-last-light">
-            <div class="sunset">
+        <div id="sunset-last-light-container">
+            <div class="sunset-last-light">
                 <h3>Sunset</h3>
-                <span>6:15pm</span>
+                <span class="times">6:15pm</span>
             </div>
-            <div class="last-light">
+            <div class="sunset-last-light">
                 <h3>Last Light</h3>
-                <span>6:35pm</span>
+                <span class="times">6:35pm</span>
             </div>
         </div>
     </div>
