@@ -43,7 +43,8 @@ h4 {
 }
 
 #daylight-left-container {
-    margin-top: -20px;
+    margin-top: -25px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,6 +108,7 @@ button:hover {
     background-color: rgb(4, 14, 49);;
     padding: 0 30px 0 30px;
     border-radius: 5px;
+    margin-top: 8px;
 }
 
 #sunset-last-light-container {
