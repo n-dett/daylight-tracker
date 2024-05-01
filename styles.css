@@ -26,7 +26,7 @@
     --container-bkg-color: #10184c;
     --container-shadow-color: 0 6px 20px 0 rgba(0, 0, 0, 0.101);
     --time-left-bkg-color: #0c123b;
-    --enter-btn-hover-color: #0c123b;
+    --enter-btn-hover-color: #2334a3;
     --btn-border: rgb(255, 255, 255, 0.75) solid 1px;
     --input-outline-color: 1px solid #0c123b;
 
@@ -34,11 +34,15 @@
 
 :root.sunset-theme {
     --primary-text-color: rgb(21, 32, 71);
-    --background-gradient: linear-gradient(#e0f9ff, #ffffff);
+    --background-gradient: linear-gradient(rgb(59, 88, 134), rgb(137, 144, 197), rgb(236, 160, 155), rgb(228, 188, 139));
     --container-bkg-color: rgba(255, 255, 255, 0.75);
     --container-shadow-color: 0 6px 20px 0 rgba(0, 0, 0, 0.101);
-
+    --time-left-bkg-color: rgba(255, 255, 255, 0.8);
+    --enter-btn-hover-color: rgba(255, 255, 255, 0.8);
+    --btn-border: rgb(21, 32, 71) solid 1px;
+    --input-outline-color: 1px solid rgb(21, 32, 71);
 }
+
 
 body {
     background: var(--background-gradient);
