@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="night-theme" lang="en">
+<html class="day-theme" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     <div class="container">
         <div>
             <h1 id="daylight-tracker">Daylight Tracker</h1>
-            <h4>Enter your zipcode</h4>
+            <h4 id="enter-your-zip">Enter your zipcode</h4>
             <input type="text" id="zip-input" placeholder="123456">
             <div id="buttons-container">
                 <button id="enter-button">Enter</button>
@@ -30,7 +30,9 @@
                 <span class="times">6:35pm</span>
             </div>
         </div>
+        
     </div>
+    <p id="api-credit">Data courtesy of <a href="https://sunrisesunset.io/" alt="SunsetSunrise.io" target="_blank">SunsetSunrise.io</a></p>
     <script src="daylight.js"></script>
 </body>
 </html>
