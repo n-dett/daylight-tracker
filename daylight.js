@@ -5,10 +5,85 @@
 // let currentTime = currentTime
 
 
+// // Coordinates for Lincoln
+// const latitude = 40.806862
+// const longitude = -96.681679
+// const url = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}`
+
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => {
+//     let lastLightTime = data.results.last_light;
+//     let truncLastLightTime = removeSeconds(lastLightTime);
+//     document.querySelector('#sunrise-or-last-light').innerHTML = truncLastLightTime;
+
+//     let sunsetTime = data.results.sunset;
+//     let truncSunsetTime = removeSeconds(sunsetTime);
+//     document.querySelector('#sunset-or-first-light').innerHTML = truncSunsetTime;
+//   })
+//   .catch(error => console.error('Error:', error))
+
+
+
+// Coordinates for Lincoln
+const latitude = 40.806862;
+const longitude = -96.681679;
+const timeZone = "america/chicago";
+const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&tzid=${timeZone}`;
+
+// GET request
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    let lastLightTime = data.results.civil_twilight_end;
+    let truncLastLightTime = removeSeconds(lastLightTime);
+    document.querySelector('#sunrise-or-last-light').innerHTML = truncLastLightTime;
+
+    let sunsetTime = data.results.sunset;
+    let truncSunsetTime = removeSeconds(sunsetTime);
+    document.querySelector('#sunset-or-first-light').innerHTML = truncSunsetTime;
+  })
+  .catch(error => console.error('Error:', error))
+
+
+
+
+
+function removeSeconds(daylightTime)
+{
+    // Split the time value into parts
+    let timeParts = daylightTime.split(' ');
+
+    // Extract time without seconds
+    let timeWithoutSeconds = timeParts[0].substring(0, timeParts[0].length - 3);
+
+    // Reappend PM
+    return timeWithoutSeconds + ' ' + timeParts[1]; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///// FOR NEXT DAYLIGHT ////
 
 // let tomorrowDate = tomorrowDate
 // let tomorrowTime = tomorrowTime
+
+
+
+
+
+
+
 
 
 
@@ -33,28 +108,30 @@ userInput.addEventListener("keypress", function(e){
 
 
 
-// Change colors at sunset and sunrise
-function changeColorTheme(){
-    // Check current time
-    const currentTime = new Date();
+// // Change colors at sunset and sunrise
+// function changeColorTheme(){
+//     // Check current time
+//     const currentTime = new Date();
 
-    let daylightTimes = [
-        {time: "6:00:00 PM", cssClass: "sunsetColors"},
-        {time: "7:00:00 PM", cssClass: "lastLightColors"},
-        {time: "6:00:00 AM", cssClass: "firstLightColors"},
-        {time: "7:00:00 AM", cssClass: "sunriseColors"},
-    ]
+//     let daylightTimes = [
+//         {time: "6:00:00 PM", cssClass: "sunset-theme"},
+//         {time: "7:00:00 AM", cssClass: "sunset-theme"},
+//     ]
 
-    // Set sunset time
-    let sunsetTimeString = "6:00:00 PM";
-    let sunsetTimeArray = sunsetTimeString.split(/[:\s]/);
-    let sunsetHour = sunsetTimeArray[0];
-    let sunsetMinutes = sunsetTimeArray[1];
+
+
+
+
+
+
+
+
+
 
 
 // foreach loop to iterate over each time and compare to current time
 
-}
+//}
 // Check time every minute
 //setInterval(changeColorTheme, 60000);
 
