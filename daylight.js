@@ -1,64 +1,36 @@
 
-///// FOR TODAY'S DAYLIGHT
-
-// let todayDate = today;
-// let currentTime = currentTime
+import {getTime} from './sunsetAPI.js';
+// import { changeTheme } from './themeManager.js';
 
 
-// // Coordinates for Lincoln
-// const latitude = 40.806862
-// const longitude = -96.681679
-// const url = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}`
+main();
 
-// fetch(url)
-//   .then(response => response.json())
-//   .then(data => {
-//     let lastLightTime = data.results.last_light;
-//     let truncLastLightTime = removeSeconds(lastLightTime);
-//     document.querySelector('#sunrise-or-last-light').innerHTML = truncLastLightTime;
+async function main(){
+    let zipCode = await getUserZip();
+    console.log(zipCode);
+    let sunsetTime= await getTime('sunset', '#sunset-or-first-light');
+    let lastLightTime = await getTime('civil_twilight_end', '#sunrise-or-last-light');
+ //   let firstLightTime = getTime('firstLight', '#sunset-or-first-light');
+ //   let sunriseTime = getTime('sunrise', '#sunrise-or-last-light');
 
-//     let sunsetTime = data.results.sunset;
-//     let truncSunsetTime = removeSeconds(sunsetTime);
-//     document.querySelector('#sunset-or-first-light').innerHTML = truncSunsetTime;
-//   })
-//   .catch(error => console.error('Error:', error))
+}
 
 
 
-// Coordinates for Lincoln
-const latitude = 40.806862;
-const longitude = -96.681679;
-const timeZone = "america/chicago";
-const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&tzid=${timeZone}`;
+function getUserZip() {
+    return new Promise((resolve, reject) => {
+        let userInput = document.getElementById("zip-input");
 
-// GET request
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    let lastLightTime = data.results.civil_twilight_end;
-    let truncLastLightTime = removeSeconds(lastLightTime);
-    document.querySelector('#sunrise-or-last-light').innerHTML = truncLastLightTime;
+        document.getElementById("enter-button").addEventListener("click", function() {
+            resolve(userInput.value);
+        });
 
-    let sunsetTime = data.results.sunset;
-    let truncSunsetTime = removeSeconds(sunsetTime);
-    document.querySelector('#sunset-or-first-light').innerHTML = truncSunsetTime;
-  })
-  .catch(error => console.error('Error:', error))
-
-
-
-
-
-function removeSeconds(daylightTime)
-{
-    // Split the time value into parts
-    let timeParts = daylightTime.split(' ');
-
-    // Extract time without seconds
-    let timeWithoutSeconds = timeParts[0].substring(0, timeParts[0].length - 3);
-
-    // Reappend PM
-    return timeWithoutSeconds + ' ' + timeParts[1]; 
+        userInput.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                document.getElementById("enter-button").click();
+            }
+        });
+    });
 }
 
 
@@ -73,39 +45,7 @@ function removeSeconds(daylightTime)
 
 
 
-///// FOR NEXT DAYLIGHT ////
-
-// let tomorrowDate = tomorrowDate
-// let tomorrowTime = tomorrowTime
-
-
-
-
-
-
-
-
-
-
-
-
-// Get user zip code
-
-let userInput = document.getElementById("zip-input");
-
-document.getElementById("enter-button").addEventListener("click", function(){
-    userInput.value;
-    console.log(userInput.value)
-})
-
-userInput.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        document.getElementById("enter-button").click();
-    }
-})
-
-
-
+// Object to hold sunset, last light, coordinates, time zone
 
 
 // // Change colors at sunset and sunrise
