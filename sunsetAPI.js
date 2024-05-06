@@ -8,18 +8,24 @@ const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude
 export async function getTime(daylightType, idTag)
 {
     let truncTime;
+    let daylightTime;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        let daylightTime = data.results[daylightType];
+        daylightTime = data.results[daylightType];
         truncTime = removeSeconds(daylightTime);
-        document.querySelector(idTag).innerHTML = truncTime;
+ //       document.querySelector(idTag).innerHTML = truncTime;
     } catch (error) {
         console.error('Error:', error);
     }
 
-    return truncTime;
+    let times = {
+        truncTime: truncTime,
+        daylightTime: daylightTime
+    };
+
+    return times;
 }
 
 
