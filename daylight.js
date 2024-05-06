@@ -6,31 +6,30 @@ import {getTime} from './sunsetAPI.js';
 main();
 
 async function main(){
-    let zipCode = await getUserZip();
-    console.log(zipCode);
-    let sunsetTime= await getTime('sunset', '#sunset-or-first-light');
+    let zipCode;
+    getUserZip(zipCode);
+    let sunsetTime = await getTime('sunset', '#sunset-or-first-light');
     let lastLightTime = await getTime('civil_twilight_end', '#sunrise-or-last-light');
- //   let firstLightTime = getTime('firstLight', '#sunset-or-first-light');
+ //   let firstLightTime = getTime('civil_twilight_start', '#sunset-or-first-light');
  //   let sunriseTime = getTime('sunrise', '#sunrise-or-last-light');
 
 }
 
 
+function getUserZip(zipCode) {
+    let userInput = document.getElementById("zip-input");
 
-function getUserZip() {
-    return new Promise((resolve, reject) => {
-        let userInput = document.getElementById("zip-input");
-
-        document.getElementById("enter-button").addEventListener("click", function() {
-            resolve(userInput.value);
-        });
-
-        userInput.addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                document.getElementById("enter-button").click();
-            }
-        });
-    });
+    document.getElementById("enter-button").addEventListener("click", function(){
+        zipCode = userInput.value;
+        console.log(zipCode);
+    })
+    
+    userInput.addEventListener("keypress", function(e){
+        if(e.key === "Enter"){
+            e.preventDefault();
+            document.getElementById("enter-button").click();
+        }
+    })
 }
 
 
