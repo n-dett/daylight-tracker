@@ -15,7 +15,7 @@ export async function getTime(daylightType, idTag)
         const data = await response.json();
         daylightTime = data.results[daylightType];
         truncTime = removeSeconds(daylightTime);
- //       document.querySelector(idTag).innerHTML = truncTime;
+//        document.querySelector(idTag).innerHTML = truncTime;
     } catch (error) {
         console.error('Error:', error);
     }

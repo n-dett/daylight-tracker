@@ -32,11 +32,11 @@ async function main(){
     let truncSunriseTime = sunriseObj.truncTime;
     let sunriseTime = sunriseObj.daylightTime;
     console.log('sunrise: ', sunriseTime);
-    console.log('truncFirst: ', truncSunriseTime);
+    console.log('truncSunrise: ', truncSunriseTime);
 
   
 
-    chooseDisplayTimes(truncSunsetTime, truncLastLightTime, truncFirstLightTime,
+    getDisplayTimes(truncSunsetTime, truncLastLightTime, truncFirstLightTime,
         truncSunriseTime, lastLightTime, firstLightTime);
 
 }
@@ -61,7 +61,7 @@ function getUserZip(zipCode) {
 }
 
 
-function chooseDisplayTimes(truncSunsetTime, truncLastLightTime, truncFirstLightTime,
+function getDisplayTimes(truncSunsetTime, truncLastLightTime, truncFirstLightTime,
     truncSunriseTime, lastLightTime, firstLightTime){
     // Get current time
     const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false});
@@ -78,6 +78,7 @@ function chooseDisplayTimes(truncSunsetTime, truncLastLightTime, truncFirstLight
 }
 
 function stringTimeTo24Hr(timeString){
+    // If time is PM, add 12 hours
     if(timeString[timeString.length-2] == 'P'){
         let timeParts = timeString.split(':');
         let hour = parseInt(timeParts[0]);
@@ -85,6 +86,8 @@ function stringTimeTo24Hr(timeString){
         timeParts[0] = hour.toString();
         timeString = timeParts.join(':');
     }
+
+    // Need to add a zero in front of hour
 
     const newTime = timeString.substring(0, timeString.length - 3);
     return newTime;
@@ -101,15 +104,7 @@ function stringTimeTo24Hr(timeString){
 // Object to hold sunset, last light, coordinates, time zone
 
 
-// // Change colors at sunset and sunrise
-// function changeColorTheme(){
-//     // Check current time
-//     const currentTime = new Date();
 
-//     let daylightTimes = [
-//         {time: "6:00:00 PM", cssClass: "sunset-theme"},
-//         {time: "7:00:00 AM", cssClass: "sunset-theme"},
-//     ]
 
 
 
