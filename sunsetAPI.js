@@ -5,7 +5,7 @@ const timeZone = "america/chicago";
 const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&tzid=${timeZone}`;
 
 
-export async function getTime(daylightType, idTag)
+export async function getDaylightTime(daylightType, idTag)
 {
     let truncTime;
     let daylightTime;
