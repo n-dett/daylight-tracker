@@ -1,6 +1,6 @@
 
-// import {getDaylightTime} from './sunsetAPI.js';
-import {setDaylightTimes, get24HrTimes} from './getTimes.js';
+// import {getDaylightData} from './sunsetAPI.js';
+import {setDaylightTimes, getTimesInMins} from './getTimes.js';
 
 
 
@@ -11,7 +11,7 @@ async function main(){
     getUserZip(zipCode);
 
     let daylightTimes = setDaylightTimes();
-    get24HrTimes((await daylightTimes).truncLastLightTime, (await daylightTimes).truncFirstLightTime);
+    getTimesInMins((await daylightTimes).truncLastLightTime, (await daylightTimes).truncFirstLightTime);
     
 }
 

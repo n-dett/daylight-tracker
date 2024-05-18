@@ -1,39 +1,45 @@
-import {getDaylightTime} from './sunsetAPI.js';
+import {getDaylightData} from './sunsetAPI.js';
 
-// let truncSunsetTime;
-// let sunsetTime;
-// let truncSunriseTime;
-// let sunriseTime;
-// let truncFirstLightTime;
-// let firstLightTime;
-// let truncLastLightTime;
-// let lastLightTime;
-
-
+const todayDate = getDate();
+const tmwDate = getTmwDate();
 
 export async function setDaylightTimes(){
-    let sunsetObj = await getDaylightTime('sunset', '#sunset-or-first-light');
+    // Today's times
+    let sunsetObj = await getDaylightData('sunset', todayDate);
     let truncSunsetTime = sunsetObj.truncTime;
     let sunsetTime = sunsetObj.daylightTime;
     console.log('sunset: ', sunsetTime);
     console.log('truncSunset: ', truncSunsetTime);
 
-    let lastLightObj = await getDaylightTime('civil_twilight_end', '#sunrise-or-last-light');
+    let lastLightObj = await getDaylightData('civil_twilight_end', todayDate);
     let truncLastLightTime = lastLightObj.truncTime;
     let lastLightTime = lastLightObj.daylightTime;
     console.log('last light: ', lastLightTime);
     console.log('truncLast: ', truncLastLightTime);
 
-    let firstLightObj = await getDaylightTime('civil_twilight_begin', '#sunset-or-first-light');
+    let firstLightObj = await getDaylightData('civil_twilight_begin', todayDate);
     let truncFirstLightTime = firstLightObj.truncTime;
     let firstLightTime = firstLightObj.daylightTime;
     console.log('first light: ', firstLightTime);
     console.log('truncFirst: ', truncFirstLightTime);
 
-    let sunriseObj = await getDaylightTime('sunrise', '#sunrise-or-last-light');
+    let sunriseObj = await getDaylightData('sunrise', todayDate);
     let truncSunriseTime = sunriseObj.truncTime;
     let sunriseTime = sunriseObj.daylightTime;
     console.log('sunrise: ', sunriseTime);
+    console.log('truncSunrise: ', truncSunriseTime);
+
+    // Tomorrow's Times
+    let tmwSunriseObj = await getDaylightData('sunrise', tmwDate);
+    let truncTmwSunriseTime = sunriseObj.truncTime;
+    let tmwSunriseTime = sunriseObj.daylightTime;
+    console.log('tmw sunrise: ', sunriseTime);
+    console.log('truncSunrise: ', truncSunriseTime);
+
+    let tmwFirstLightObj = await getDaylightData('civil_twilight_begin', tmwDate);
+    let truncTmwFirstLightTime = sunriseObj.truncTime;
+    let tmwFirstLightTime = sunriseObj.daylightTime;
+    console.log('tmw first light: ', sunriseTime);
     console.log('truncSunrise: ', truncSunriseTime);
 
     return {
@@ -45,7 +51,12 @@ export async function setDaylightTimes(){
         truncSunsetTime: truncSunsetTime,
         truncSunriseTime: truncSunriseTime,
         truncFirstLightTime: truncFirstLightTime,
-        truncLastLightTime: truncLastLightTime
+        truncLastLightTime: truncLastLightTime,
+
+        tmwSunriseTime: tmwSunriseTime,
+        truncTmwSunriseTime: truncTmwSunriseTime,
+        tmwFirstLightTime: tmwFirstLightTime,
+        truncTmwFirstLightTime: truncTmwFirstLightTime
     }
 }
 
@@ -54,7 +65,7 @@ export async function setDaylightTimes(){
 
 // Convert daylight times to 24hr, then to minutes, to calculate countdown time
 
-export function get24HrTimes(truncLastLightTime, truncFirstLightTime){
+export function getTimesInMins(truncLastLightTime, truncFirstLightTime){
     // Get current time
     let currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false});
     currentTime = hoursToMinutes(currentTime);
@@ -95,10 +106,43 @@ function stringTimeTo24Hr(timeString){
 }
 
 
+
 function hoursToMinutes(time){
     const [hours, minutes] = time.split(':').map(Number);
     return hours * 60 + minutes;
 }
+
+
+// Get date in YYYY-MM-DD format
+function getDate(){
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate); 
+
+    return formattedDate;
+}
+
+
+// ***** Need to verify that tomorrow's times are correct *****
+function getTmwDate(){
+    const date = new Date();
+    date.setDate(date.getDate() + 1); // Update the date to tomorrow
+    const tmwDate = new Date(date); // Create a new Date object using the updated date
+
+    const year = tmwDate.getFullYear();
+    const month = String(tmwDate.getMonth() + 1).padStart(2, '0');
+    const day = String(tmwDate.getDate()).padStart(2, '0');
+
+    const formattedTmwDate = `${year}-${month}-${day}`;
+    console.log(formattedTmwDate); 
+
+    return formattedTmwDate;
+}
+
 
 
 

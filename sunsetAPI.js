@@ -2,11 +2,15 @@
 const latitude = 40.806862;
 const longitude = -96.681679;
 const timeZone = "america/chicago";
-const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&tzid=${timeZone}`;
 
 
-export async function getDaylightTime(daylightType, idTag)
+export async function getDaylightData(daylightType, date)
 {
+    // Coordinates for Lincoln
+    const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${date}&tzid=${timeZone}`;
+
+
+
     let truncTime;
     let daylightTime;
 
@@ -15,7 +19,6 @@ export async function getDaylightTime(daylightType, idTag)
         const data = await response.json();
         daylightTime = data.results[daylightType];
         truncTime = removeSeconds(daylightTime);
-//        document.querySelector(idTag).innerHTML = truncTime;
     } catch (error) {
         console.error('Error:', error);
     }

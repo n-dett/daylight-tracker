@@ -1,4 +1,4 @@
-
+import {setDaylightTimes, getTimesInMin} from './getTimes.js';
 
 
 // Change colors at sunset and sunrise
